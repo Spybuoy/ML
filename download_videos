@@ -1,0 +1,16 @@
+from __future__ import unicode_literals
+import youtube_dl
+import os
+import pandas as pd
+
+df=pd.read_csv("MHVU_Train.csv")
+id=df['youtube_id']
+
+for i in range(2000):
+    a = 1744+i
+    try:
+        url=f"https://www.youtube.com/watch?v={id[a]}"
+        os.system(f"youtube-dl -f mp4 -o {a}.f%(format_id)s.%(ext)s -f worstvideo --max-filesize 2M {url}")
+    except:
+        pass
+ 
